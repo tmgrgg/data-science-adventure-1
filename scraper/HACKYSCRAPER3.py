@@ -56,6 +56,11 @@ if get_link or get_data:
 	#browser = webdriver.Chrome()
 
 # 4- Scrape for links and brief data
+    
+    
+    #GET JOB NAME AND CITY
+jobName = input("Job title?")
+city = input("City?")
 
 
 if get_link :
@@ -67,12 +72,12 @@ if get_link :
 
 		# Initialize cities and jobs
 
-		jobName_lst = ['Data Scientist', 'Data Analyst','Data Engineer']
-		jobName = np.random.choice(jobName_lst)
+		#jobName_lst = ['Data Scientist', 'Data Analyst','Data Engineer']
+		#jobName = np.random.choice(jobName_lst)
 		#jobName = 'Data Scientist' ####&&&&
 
-		city_lst = ['San Jose','New York','San Francisco','Detroit','Washington','Austin','Boston','Seattle','Chicago','Los Angeles',' ']
-		city = np.random.choice(city_lst)
+		#city_lst = ['San Jose','New York','San Francisco','Detroit','Washington','Austin','Boston','Seattle','Chicago','Los Angeles',' ']
+		#city = np.random.choice(city_lst)
 		#city = ' '  ####&&&&
 
 		print('jobName = '+jobName+ ', city = '+city)
