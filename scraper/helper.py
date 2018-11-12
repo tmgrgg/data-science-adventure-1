@@ -17,6 +17,7 @@ import pickle
 import re
 import csv
 import os.path
+from os import walk
 #from collections import OrderedDict
 import warnings
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
@@ -61,7 +62,7 @@ def get_csv(pickle_obj):  ####&&&& Don' use it for new files
     my_dict = load_obj(pickle_obj)
     csv_filename = 'mycsvfile.csv'
     if os.path.isfile(csv_filename):
-        print('File already exists! Please rename it.')
+        print('File aget_csv(pickle_obj)lready exists! Please rename it.')
         return
     with open(csv_filename, 'w') as f:  # Just use 'w' mode in 3.x
         writer = csv.writer(f)
@@ -125,7 +126,7 @@ def get_csv3(pickle_obj): ####&&&&
          'sal_low', 'sal_high', 'link']#,'description','hq_city','hq_state_code','size','industry']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         print(my_dict)
-        
+
         writer.writeheader()
 
         for k,v in my_dict.items():
@@ -151,20 +152,21 @@ def get_csv3(pickle_obj): ####&&&&
                 writer.writerow(new_dict) #order preserved
 
 ##############################################################################
-                
+
+
 def build_csv_tom(pickle_obj): ####&&&&
+    city_name = pickle_obj.replace('glassDoorDict', '')
     my_dict = load_obj(pickle_obj)
-    csv_filename = 'mycsvfile5.csv'
+    csv_filename = f'jobcsv{city_name}.csv'
     if os.path.isfile(csv_filename):
         print('File already exists! Please rename it.')
         return
-
     with open(csv_filename, 'w') as f:  # Just use 'w' mode in 3.x
         fieldnames = ['job_id','rating', 'position', 'company', 'job_city', 'job_state_code',\
-         'sal_low', 'sal_high', 'link']#,'description','hq_city','hq_state_code','size','industry']
+                 'sal_low', 'sal_high', 'link']#,'description','hq_city','hq_state_code','size','industry']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         print(my_dict)
-        
+
         writer.writeheader()
 
         for k,v in my_dict.items():
@@ -179,14 +181,52 @@ def build_csv_tom(pickle_obj): ####&&&&
                 new_dict['sal_low'] = v[5]
                 new_dict['sal_high'] = v[6]
                 new_dict['link'] = v[7]
-                #new_dict['description'] = [x.decode('ascii') for x in v[8]]
-                #print(type(v[8]))
-                #new_dict['hq_city'] = v[9]
-                #new_dict['hq_state_code'] = v[10]
-                #new_dict['size'] = v[11]
-                #new_dict['industry'] = v[12]
+                    #new_dict['description'] = [x.decode('ascii') for x in v[8]]
+                    #print(type(v[8]))
+                    #new_dict['hq_city'] = v[9]
+                    #new_dict['hq_state_code'] = v[10]
+                    #new_dict['size'] = v[11]
+                    #new_dict['industry'] = v[12]
 
-                #writer.writerow(new_dict.values())
+                    #writer.writerow(new_dict.values())
+                writer.writerow(new_dict) #order preserved
+                
+def build_csv_tom_extra(pickle_obj): ####&&&&
+    city_name = pickle_obj.replace('glassDoorDict', '')
+    my_dict = load_obj(pickle_obj)
+    csv_filename = f'jobcsv{city_name}.csv'
+    if os.path.isfile(csv_filename):
+        print('File already exists! Please rename it.')
+        return
+    with open(csv_filename, 'w') as f:  # Just use 'w' mode in 3.x
+        fieldnames = ['job_id','rating', 'position', 'company', 'job_city', 'job_state_code',\
+                 'sal_low', 'sal_high', 'link','description','hq_city','hq_state_code','size','industry']
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        print(my_dict)
+
+        writer.writeheader()
+
+        for k,v in my_dict.items():
+            print("LENGTH OF V:" + str(len(v)))
+            if len(v) == 8:
+                new_dict = {}
+                new_dict['job_id'] = k
+                new_dict['rating'] = v[0]
+                new_dict['position'] = v[1]
+                new_dict['company'] = v[2]
+                new_dict['job_city'] = v[3]
+                new_dict['job_state_code'] = v[4]
+                new_dict['sal_low'] = v[5]
+                new_dict['sal_high'] = v[6]
+                new_dict['link'] = v[7]
+                new_dict['description'] = [x.decode('ascii') for x in v[8]]
+                print(type(v[8]))
+                new_dict['hq_city'] = v[9]
+                new_dict['hq_state_code'] = v[10]
+                new_dict['size'] = v[11]
+                new_dict['industry'] = v[12]
+
+                    #writer.writerow(new_dict.values())
                 writer.writerow(new_dict) #order preserved
 
 
@@ -215,12 +255,13 @@ def searchJobs(browser, jobName, city=None, jobDict = None, link=None):
         browser.find_element_by_class_name('gd-btn-mkt').click()
 
         sleep(5)
-        
+
 
         # Find brief description
 
+        num_pages = 1
 
-        for i in range(20): #20  ####&&&&
+        for i in range(num_pages): #20  ####&&&&
             try:
                 # Extract useful classes
                 jobPosting =browser.find_elements_by_class_name('jl')

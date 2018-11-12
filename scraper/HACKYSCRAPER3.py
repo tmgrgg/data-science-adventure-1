@@ -105,7 +105,7 @@ if get_link :
 	browser.close()
  # 5- Scrape the job description, for every link
 
-if get_data:
+if !get_data:
 
 	print('len(link) = '+str(len(link)))
 	while len(link) > 200: # originally 0, a hard coded solution for when only bad links are left.
