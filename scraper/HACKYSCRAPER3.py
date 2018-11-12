@@ -20,16 +20,19 @@ string_from_text
 
 # 1- Load existing dictionary. Check for initial dictionary.
 # If empty initialize
-
+city = input("City?")
+link_doc_name = f"glassDoorlink{city.replace(' ','')}"
+jobDict_doc_name = f"glassDoorDict{city.replace(' ','')}"
 try:
-	jobDict = load_obj('glassDoorDict')
-	link =    load_obj('glassDoorlink')
+	jobDict = load_obj(jobDict_doc_name)
+	link =    load_obj(link_doc_name)
 except:
-	save_obj([], 'glassDoorlink')
-	save_obj({}, 'glassDoorDict')
+	save_obj([], link_doc_name)
+	save_obj({}, jobDict_doc_name)
 
-	jobDict = load_obj('glassDoorDict')
-	link =    load_obj('glassDoorlink')
+	jobDict = load_obj(jobDict_doc_name)
+	link =    load_obj(link_doc_name)
+	# page = link[rnd_job][1]
 
 print('len(jobDict) = '+str(len(jobDict))+ ', len(link) = '+str(len(link)))
 
@@ -38,8 +41,8 @@ print('len(jobDict) = '+str(len(jobDict))+ ', len(link) = '+str(len(link)))
 #    get_data => Scraping for detailed data.
 
 
-get_link = True  ####&&&&
-#get_link = False
+# get_link = True ####&&&&
+get_link = True
 
 
 get_data = (not get_link) # either get_link or get_data
@@ -56,30 +59,25 @@ if get_link or get_data:
 	#browser = webdriver.Chrome()
 
 # 4- Scrape for links and brief data
-    
-    
-    #GET JOB NAME AND CITY
-jobName = input("Job title?")
-city = input("City?")
 
 
 if get_link :
 	iter_num = 0
-	while iter_num <3: # default 1 ####&&&&
+	while iter_num <1: # default 1 ####&&&&
 		print('Starting iteration number {}'.format(iter_num))
 		sleep(get_pause())
 		browser.get(website)
 
 		# Initialize cities and jobs
 
-		#jobName_lst = ['Data Scientist', 'Data Analyst','Data Engineer']
-		#jobName = np.random.choice(jobName_lst)
+		# jobName_lst = ['Data Scientist', 'Data Analyst','Data Engineer']
+		# jobName = np.random.choice(jobName_lst)
+		jobName = 'Data Scientist'
 		#jobName = 'Data Scientist' ####&&&&
 
-		#city_lst = ['San Jose','New York','San Francisco','Detroit','Washington','Austin','Boston','Seattle','Chicago','Los Angeles',' ']
-		#city = np.random.choice(city_lst)
+		# city_lst = ['San Jose','New York','San Francisco','Detroit','Washington','Austin','Boston','Seattle','Chicago','Los Angeles',' ']
+		# city = np.random.choice(city_lst)
 		#city = ' '  ####&&&&
-
 		print('jobName = '+jobName+ ', city = '+city)
 
 		# search for jobs (short description)
@@ -97,16 +95,14 @@ if get_link :
 
 		# save dictionary and link
 
-		save_obj(update_jobDict, 'glassDoorDict')
-		save_obj(update_link, 'glassDoorlink')
+		save_obj(update_jobDict, jobDict_doc_name)
+		save_obj(update_link, link_doc_name)
 
 		iter_num += 1
 
 	browser.close()
  # 5- Scrape the job description, for every link
-
 if get_data:
-
 	print('len(link) = '+str(len(link)))
 	while len(link) > 200: # originally 0, a hard coded solution for when only bad links are left.
 	#for i in range(250): # debugging	####&&&&
@@ -140,20 +136,20 @@ if get_data:
 				browser.find_element_by_xpath('//*[@id="JobContent"]//header/ul/li[2]/span').click()
 				tmp_txt = browser.find_element_by_id('EmpBasicInfo').text
 
-				hq_city = string_from_text('Headquarters', tmp_txt).split(',')[0]
-				#print('hq_city = ',hq_city)
-				jobDict[ids].append(hq_city)
-				#print(' 1 = ',)
-				hq_state_code = string_from_text('Headquarters', tmp_txt).split(',')[1]
-				#print('hq_state_code = ',hq_state_code)
-				jobDict[ids].append(hq_state_code)
-				#print(' 2 = ',)
-				#size_low = int(re.findall('\d+',string_from_text('Size',tmp_txt))[0])
-				size = re.findall('\d+',string_from_text('Size',tmp_txt))
-				#print('size = ', size)
-				#size_high = int(re.findall('\d+',string_from_text('Size',tmp_txt))[1])
-				#print(' = ',)
-				jobDict[ids].append(size)
+				# hq_city = string_from_text('Headquarters', tmp_txt).split(',')[0]
+				# #print('hq_city = ',hq_city)
+				# jobDict[ids].append(hq_city)
+				# #print(' 1 = ',)
+				# hq_state_code = string_from_text('Headquarters', tmp_txt).split(',')[1]
+				# #print('hq_state_code = ',hq_state_code)
+				# jobDict[ids].append(hq_state_code)
+				# #print(' 2 = ',)
+				# #size_low = int(re.findall('\d+',string_from_text('Size',tmp_txt))[0])
+				# size = re.findall('\d+',string_from_text('Size',tmp_txt))
+				# #print('size = ', size)
+				# #size_high = int(re.findall('\d+',string_from_text('Size',tmp_txt))[1])
+				# #print(' = ',)
+				# jobDict[ids].append(size)
 				#print(' 3 = ',)
 				#jobDict[ids].append(size_low)
 				#jobDict[ids].append(size_high)
@@ -174,8 +170,8 @@ if get_data:
 
 			# if everything is fine, save
 			#print("Going to save data!!")
-			save_obj(jobDict, 'glassDoorDict')
-			save_obj(link, 'glassDoorlink')
+			save_obj(jobDict, jobDict_doc_name)
+			save_obj(link, link_doc_name)
 
 			print('Scraped successfully ' + ids)
 
