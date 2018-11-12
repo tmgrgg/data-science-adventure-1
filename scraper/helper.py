@@ -34,7 +34,7 @@ def init_driver():
     chrome_options.add_argument("--disable-plugins-discovery")
     chrome_options.add_argument("--start-maximized")
     #browser = webdriver.Chrome(driver, chrome_options=chrome_options)
-    browser = webdriver.Chrome(executable_path='/Users/griggles/Documents/FLATIRON/PROJECT_1/data-science-adventure-1/scraper/chromedriver'
+    browser = webdriver.Chrome(executable_path='/Users/samiramunir/Documents/Flatiron_2018/Projects/project1/scraper/chromedriver'
 , chrome_options=chrome_options)
     #browser = webdriver.Chrome()
 
