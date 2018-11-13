@@ -1,8 +1,16 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov 12 21:45:09 2018
+from gdScraper import build_dataset
+from gdHelper import build_csv
 
-@author: griggles
-"""
+location_list = ['New York City', 'Los Angeles', 'San Francisco', 'Chicago', 'Houston', 'Philadelphia']
 
+def autoscrape(job_title = 'Data Scientist' , locations=location_list):
+    for location in locations:
+        try:
+            build_dataset(job_title, location)
+            build_csv(job_title, location)
+        except Exception as e:
+            print(e)
+            build_csv(job_title, location)
+        
+
+    

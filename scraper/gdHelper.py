@@ -1,28 +1,47 @@
 from selenium import webdriver
 #from bs4 import BeautifulSoup # For HTML parsing
 from time import sleep # To prevent overwhelming the server between connections
-from collections import Counter # Keep track of our term counts
-from nltk.corpus import stopwords # Filter out stopwords, such as 'the', 'or', 'and'
-import pandas as pd # For converting results to a dataframe and bar chart plots
-from selenium.webdriver.common import action_chains, keys
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import numpy as np
 import pickle
-import re
 import csv
 import os.path
-from os import walk
 #from collections import OrderedDict
 import warnings
 import random
 
-from OurHelper import load_obj, save_obj, init_driver, searchJobs,\
-string_from_text
-
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+
+def init_driver():
+    ''' Initialize chrome driver'''
+
+    chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.add_argument('--disable-extensions')
+    chrome_options.add_argument('--profile-directory=Default')
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--disable-plugins-discovery")
+    chrome_options.add_argument("--start-maximized")
+    #browser = webdriver.Chrome(driver, chrome_options=chrome_options)
+    browser = webdriver.Chrome(executable_path='/Users/griggles/Documents/FLATIRON/PROJECT_1/data-science-adventure-1/scraper/chromedriver'
+, chrome_options=chrome_options)
+    #browser = webdriver.Chrome()
+
+    return browser
+
+##############################################################################
+
+def save_obj(obj, name):
+    with open(name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+###############################################################################
+
+def load_obj(name):
+    with open(name + '.pkl', 'rb') as f:
+        return pickle.load(f)
+    
+def get_pkl_path(job_title, location):
+    return 'data/pkl/glassDoorDict_' + job_title.lower() + '_' + location.lower()
 
 def build_csv_tom(pickle_obj): ####&&&&
     job_city_info = pickle_obj.replace('glassDoorDict', '')
@@ -55,12 +74,44 @@ def build_csv_tom(pickle_obj): ####&&&&
 
                 writer.writerow(new_dict)
                 
+def build_csv(job_title, location):
+    job_dict = load_obj(get_pkl_path(job_title, location))
+    print(len(job_dict))
+    csv_filename = 'data/csv/{}_{}.csv'.format(job_title.lower(), location.lower())
+    if os.path.isfile(csv_filename):
+        print("csv file exists - delete and try again")
+        return
+    with open(csv_filename, 'w') as f:
+        fieldnames = ['job_id','rating', 'position', 'company', 'job_city', 'job_state_code',\
+                 'sal_low', 'sal_high', 'industry', 'sector', 'size_small', 'size_large']
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        
+        for k,v in job_dict.items():
+            d = {}
+            d['job_id']= k
+            d.update(v)
+            print(d)
+            
+            writer.writerow(d)
+                
 def get_pause():
     return random.uniform(0.1, 0.3)
 
 def wait():
     sleep(get_pause())
 
+# Grab data stored in pkl - if none is present then create pkl storage files.        
+def unpickle(job_title, location):
+    try:    
+        job_dict = load_obj(get_pkl_path(job_title, location))
+    except:
+        save_obj({}, get_pkl_path(job_title, location))
+        job_dict = load_obj(get_pkl_path(job_title, location))
+
+    print('len(job_dict) = '+str(len(job_dict)))
+    
+    return job_dict
 
 
     

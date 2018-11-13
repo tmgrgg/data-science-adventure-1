@@ -1,45 +1,11 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-#from bs4 import BeautifulSoup # For HTML parsing
-from time import sleep # To prevent overwhelming the server between connections
-from collections import Counter # Keep track of our term counts
-from nltk.corpus import stopwords # Filter out stopwords, such as 'the', 'or', 'and'
-import pandas as pd # For converting results to a dataframe and bar chart plots
-from selenium.webdriver.common import action_chains, keys
-from selenium.common.exceptions import NoSuchElementException
 import numpy as np
-import sys
 import re
 import warnings
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
-from OurHelper import load_obj, save_obj, init_driver, searchJobs, get_pause,\
-string_from_text
+from gdHelper import wait, load_obj, save_obj, init_driver, unpickle, get_pkl_path
 
-from gdHelper import wait
-
-
-# Grab data stored in pkl - if none is present then create pkl storage files.   
-
-global location_job_dict
-     
-def unpickle(job_title, location):
-    location_url_list = 'pkl/glassDoorLinks_' + job_title + '_' + location
-
-    try:    
-        job_dict = load_obj(location_job_dict)
-        url_list = load_obj(location_url_list)
-    except:
-        save_obj({}, location_job_dict)
-        save_obj([], location_url_list)
-
-        job_dict = load_obj(location_job_dict)
-        url_list =    load_obj(location_url_list)
-
-    print('len(job_dict) = '+str(len(job_dict))+ ', len(url_list) = '+str(len(url_list)))
-    
-    return job_dict
 
 #Get rid of pop ups
 def handle_popup(browser):
@@ -70,7 +36,7 @@ def enter_search_terms(browser, job_title, location):
 
     wait()
     
-def scrape_pages(browser, page_count, job_dict):
+def scrape_pages(browser, page_count, job_dict, job_title, location):
     for i in range(page_count):
         job_list =browser.find_elements_by_class_name('jl')
         
@@ -92,7 +58,7 @@ def scrape_pages(browser, page_count, job_dict):
             info_link = job[1].find_element_by_tag_name('a').get_attribute('href')
             job_info = scrape_job(browser, job[1].text, info_link)
             job_dict[job[0]] = job_info
-            save_obj(job_dict, location_job_dict)
+            save_obj(job_dict, get_pkl_path(job_title, location))
 
         #browser should be back in the original window here
         next_page_btn = browser.find_element_by_class_name('next')
@@ -206,11 +172,8 @@ def parse_job(browser, job_text):
 
 def build_dataset(job_title, location):
     print('job_title = '+ job_title + ', location = ' + location)
-    global location_job_dict
     
     url = "https://www.glassdoor.com/index.htm"
-    
-    location_job_dict = 'pkl/glassDoorDict_' + job_title + '_' + location
     
     page_count = 3
     
@@ -224,7 +187,7 @@ def build_dataset(job_title, location):
     
     enter_search_terms(browser, job_title, location)
     
-    scrape_pages(browser, page_count, job_dict)
+    scrape_pages(browser, page_count, job_dict, job_title, location)
         
     
 
