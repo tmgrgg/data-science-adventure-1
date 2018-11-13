@@ -3,8 +3,10 @@ import re
 import warnings
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+import pdb
 
-from gdHelper import wait, load_obj, save_obj, init_driver, unpickle, get_pkl_path
+from selenium.common.exceptions import NoSuchElementException
+from gdHelper import wait, save_obj, init_driver, unpickle, get_pkl_path
 
 
 #Get rid of pop ups
@@ -56,7 +58,7 @@ def scrape_pages(browser, page_count, job_dict, job_title, location):
         #each job scraped in a new tab
         for job in job_tuples:
             info_link = job[1].find_element_by_tag_name('a').get_attribute('href')
-            job_info = scrape_job(browser, job[1].text, info_link)
+            job_info = scrape_job(browser, job[1].text, info_link, location)
             job_dict[job[0]] = job_info
             save_obj(job_dict, get_pkl_path(job_title, location))
 
@@ -69,13 +71,15 @@ def scrape_pages(browser, page_count, job_dict, job_title, location):
         handle_popup(browser)
         
         wait()
+        
+    browser.close()
 
-def scrape_job(browser, job_text, info_link):
+def scrape_job(browser, job_text, info_link, location):
     #open and switch to a new tab
     browser.execute_script("window.open('" + info_link + "');")    
     browser.switch_to_window(browser.window_handles[1])
        
-    job_attributes = parse_job(browser, job_text)
+    job_attributes = parse_job(browser, job_text, location)
     
     wait()
     
@@ -86,7 +90,7 @@ def scrape_job(browser, job_text, info_link):
 
 
 #Turn a selenium web_element into required job info
-def parse_job(browser, job_text):
+def parse_job(browser, job_text, location_search):
     raw_rating = re.findall('\d\.\d', job_text)
     print(raw_rating)
     if len(raw_rating) == 1:
@@ -122,16 +126,32 @@ def parse_job(browser, job_text):
     #GET DATA FROM FULL JOB POSTING
     #Go to Company tab
     #ensure no popups
-    handle_popup(browser)
     
-    tabs = browser.find_elements_by_class_name('tabLabel')
+    #set to default
     
-            #set to default
-        
+    #TODO: should be np NAN
+    sal_est = ''
     industry = ''
     sector = ''
     size_small = ''
     size_large = ''
+    
+    handle_popup(browser)
+    
+    #get estimated sal from jobs page
+    print('location_search = ' + location_search)
+
+    try:
+        sal_elem = browser.find_element_by_id('salWrap').\
+        find_element_by_class_name('salEst')
+        if (re.fullmatch('\$.+\/ year', sal_elem.text)):
+            sal_est = int(re.sub('\D', '', sal_elem.text))
+            print('sal_est = ' + str(sal_est))
+    except NoSuchElementException as e:
+        pass
+
+
+    tabs = browser.find_elements_by_class_name('tabLabel')
     
     if (len(tabs) >= 2):
         tabs[1].click()
@@ -163,19 +183,18 @@ def parse_job(browser, job_text):
                 print('size_large = ', size_large)
     
     return {'rating': rating, 'position': position, 'company': company, 'job_city': job_city,\
-            'job_state_code': job_state_code, 'sal_low': sal_low, 'sal_high': sal_high,\
-            'industry': industry, 'sector': sector, 'size_small': size_small, 'size_large': size_large}
+            'location_search': location_search, 'job_state_code': job_state_code, 'sal_low': sal_low,\
+            'sal_est': sal_est, 'sal_high': sal_high, 'industry': industry, 'sector': sector,\
+            'size_small': size_small, 'size_large': size_large}
 
 
         
 ######### RUN  ##########
 
-def build_dataset(job_title, location):
+def build_dataset(job_title, location, page_count = 15):
     print('job_title = '+ job_title + ', location = ' + location)
     
     url = "https://www.glassdoor.com/index.htm"
-    
-    page_count = 3
     
     job_dict = unpickle(job_title, location)
     
