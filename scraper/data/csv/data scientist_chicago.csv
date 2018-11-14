@@ -1,0 +1,17 @@
+job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
+2884772045,3.9,data scientist,Mars,Chicago,Chicago,IL,110,134000,164,Food & Beverage Manufacturing,Manufacturing,10000,
+2954610555,5.0,data scientist,QuantumBlack,Chicago,Chicago,IL,nan,,nan,Consulting,Business Services,201,500
+2995637523,3.8,data scientist,Wunderman,Chicago,Chicago,IL,89,110000,135,Advertising & Marketing,Business Services,5001,10000
+2924521854,2.8,data scientist,Numerator,Chicago,Chicago,IL,nan,,nan,IT Services,Information Technology,1001,5000
+2997950164,3.7,data scientist,Centro,Chicago,Chicago,IL,94,112000,134,,,,
+2865613971,3.9,data scientist,Alliant Credit Union,Rolling Meadows,Chicago,IL,117,142000,174,Banks & Credit Unions,Finance,201,500
+2649986689,3.9,data scientist,Spectrum Communications and Consulting,Chicago,Chicago,IL,105,131000,164,Advertising & Marketing,Business Services,51,200
+3009640534,4.1,data scientist,Precima,Chicago,Chicago,IL,nan,,nan,Advertising & Marketing,Business Services,51,200
+3021977794,3.4,data scientist,Aon,Chicago,Chicago,IL,89,109000,133,Insurance Agencies & Brokerages,Insurance,10000,
+2922842026,4.5,data scientist,Maven Wave Partners,Chicago,Chicago,IL,105,130000,158,Consulting,Business Services,51,200
+3009581622,3.7,data analyst,NCSA - Next College Student Athlete,Chicago,Chicago,IL,53,62000,72,Sports & Recreation,"Arts, Entertainment & Recreation",501,1000
+2960085070,3.5,data scientist,Kaufman Hall,Skokie,Chicago,IL,99,121000,148,Consulting,Business Services,201,500
+2924064485,3.4,"data scientist, applied machine learning",Tempus Labs,Chicago,Chicago,IL,80,96000,116,Biotech & Pharmaceuticals,Biotech & Pharmaceuticals,201,500
+3004774184,4.3,data scientist,McKinsey & Company,Chicago,Chicago,IL,115,139000,170,,,,
+3007254254,4.5,data scientist,Civis Analytics,Chicago,Chicago,IL,68,81000,97,Enterprise Software & Network Solutions,Information Technology,51,200
+3011473787,3.8,data scientist,Fractal Analytics,Chicago,Chicago,IL,97,117000,143,Consulting,Business Services,1001,5000
