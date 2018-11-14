@@ -52,19 +52,21 @@ def create_industries(industries, df):
 
 # print('<<<<<<<running func company_creator()>>>>>>>>')
 
+#called iteratively to populate companies argument
+#with each df representation of csv
 def create_companies(companies, df):
-    comp_names = [company.name for company in companies if len(companies)!=0]
+    comp_names = [company.name for company in companies]
     for i in range(len(df)):
-        if not df.company[i] in comp_names:
+        if not (df.company[i] in comp_names):
             name = df.company[i]
             size_small = df.size_small[i]
             size_large = df.size_large[i]
             companies.append(Company(name = name, size_lower = size_small, size_upper = size_large))
+            comp_names.append(name)
 # print('****PAUSE****')
 # pdb.set_trace()
 
 # companies = company_creator(df)
-
 # print('<<<<<<<testing func company_creator()>>>>>>>>')
 # print(f'company size upper{companies[0].size_upper} and lower:{companies[0].size_lower}' )
 # print(f'company_names = {[comp.name for comp in companies]}\n\n <<<<<<<<<<MOVING ON>>>>>>>>>>\n\n')

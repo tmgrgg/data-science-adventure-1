@@ -5,9 +5,9 @@ import pandas as pd
 from os import listdir, getcwd
 
 
-def get_filepaths():
+def get_filepaths():#only the ones that are from glassdoor
     path = 'data/csv'
-    csv_filenames = list(filter(lambda f: '.csv' in f and 'data' in f, listdir(path)))
+    csv_filenames = list(filter(lambda f: '.csv' in f and 'data' in f,listdir(path)))
     file_paths = [path+'/'+name for name in csv_filenames]
     return file_paths
 
@@ -26,7 +26,7 @@ def pd_read_csv(file_paths):
 #     companies = create_companies(df)
 #     jobs = create_jobs(df)
 
-
+#for cities, we are pulling data from a csv obtained from a different website than glassdoor. The csv has city_expenses.csv has only columns of city name and expenses. As such the create_cities is being called separately.
 cities = create_cities()
 companies = []
 industries = []

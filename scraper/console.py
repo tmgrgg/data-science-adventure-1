@@ -12,5 +12,5 @@ def populate_db():
 
 populate_db()
 
-session.commit()
+# session.commit()
 print(' <<<<<<<POPULATING DATABASE>>>>>>>>\n\n        ***DATABASE READY***\n\n*********YOU ARE AWESOME!!*********')
