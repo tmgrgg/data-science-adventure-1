@@ -48,3 +48,5 @@ class Industry(db.Model):
     jobs = db.relationship('Job', back_populates = 'industry')
 
 db.create_all()
+
+print('******Done with Models******')

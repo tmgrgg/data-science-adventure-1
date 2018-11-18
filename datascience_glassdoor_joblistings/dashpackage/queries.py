@@ -1,6 +1,7 @@
 from dashpackage.__init__ import db
 from dashpackage.models import  Job, City, Company, Industry
 from sqlalchemy import func
+import plotly.graph_objs as go
 import pdb
 
 
@@ -18,19 +19,22 @@ def industries_and_job_listings_donut_chart():
     # pdb.set_trace()
     values = []
     labels = []
+    data = []
     for item in listy:
         values.append(round((item[0]/len(return_industries()))*100, 2))
 
         labels.append(item[1])
     data = [{"values":values,
-        "labels":labels,
-        "domain": {"x": [0, .48]},
-        "name": "Data Science Jobs by industry",
-        "hoverinfo":"label+percent+name",
-        "hole": .4,
-        "type": "donut"}]
+            "labels":labels,
+            "name": "Data Science Jobs by industry",
+            "type": "pie",
+            "hole": .4,}]
+    # data = go.Pie (values = values, labels = labels)
+
 
     return data
+
+print('******Done with Queries******')
 #
 #
 # print(top_10_industries_witht_highest_job_listings())

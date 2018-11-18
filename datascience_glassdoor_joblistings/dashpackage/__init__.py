@@ -16,4 +16,7 @@ db = SQLAlchemy(server)
 app = dash.Dash(__name__, server=server,url_base_pathname='/dashboard/')
 
 
-from dashpackage.dashboard import * 
+from dashpackage.dashboard import *
+
+
+print('******Done with init******')
