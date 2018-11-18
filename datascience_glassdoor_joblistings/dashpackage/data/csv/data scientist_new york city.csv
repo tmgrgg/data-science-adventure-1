@@ -1,31 +1,31 @@
 job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
-2557056478,4.7,data scientist,Intent Media,New York,New York City,NY,120,140000,160,Internet,Information Technology,51,200
-2907798529,4.7,data scientist,Asana,New York,New York City,NY,110,130000,155,Enterprise Software & Network Solutions,Information Technology,201,500
-2918666551,4.2,"data scientist, analytics",DoorDash,New York,New York City,NY,88,105000,126,Express Delivery Services,Transportation & Logistics,501,1000
-3020663139,3.0,data scientist,comScore,New York,New York City,NY,82,98000,117,Advertising & Marketing,Business Services,1001,5000
-3023658510,,senior data analyst,qualifIQ,New York,New York City,NY,150,,200,,,1,50
-2849832848,3.7,senior data scientist,Farfetch,New York,New York City,NY,110,130000,154,Internet,Information Technology,1001,5000
-3003962244,3.1,data scientist,Integral Ad Science,New York,New York City,NY,129,156000,188,Internet,Information Technology,501,1000
-2915385011,3.8,data scientist,Phreesia,New York,New York City,NY,111,132000,158,Health Care Services & Hospitals,Health Care,201,500
-2999485881,3.4,data scientist,Fora Financial,New York,New York City,NY,70,89000,114,Investment Banking & Asset Management,Finance,51,200
-2962011591,4.3,data scientist,HotelTonight,New York,New York City,NY,117,143000,172,"Hotels, Motels, & Resorts",Travel & Tourism,201,500
-2970926370,3.8,data scientist,7Park Data,New York,New York City,NY,nan,,nan,Research & Development,Business Services,1,50
-2909723279,4.3,data scientist,Neoway,New York,New York City,NY,80,100000,120,Enterprise Software & Network Solutions,Information Technology,201,500
-3012568456,3.5,data scientist,Verisk Analytics,Jersey City,New York City,NJ,73,92000,114,Research & Development,Business Services,5001,10000
-2625550835,3.4,data scientist,Rent the Runway,New York,New York City,NY,122,151000,188,Consumer Product Rental,Consumer Services,1001,5000
-2949882721,4.1,data scientist - summer intern,Spotify,New York,New York City,NY,94,115000,139,Internet,Information Technology,1001,5000
-2997373293,3.2,data architect,JUST Capital,New York,New York City,NY,110,134000,160,Grantmaking Foundations,Non-Profit,1,50
-2997424306,3.0,data scientist,Roku,New York,New York City,NY,151,177000,211,Computer Hardware & Software,Information Technology,501,1000
-2841842473,3.1,data scientist,S&P Global Ratings,New York,New York City,NY,109,137000,170,Financial Analytics & Research,Finance,1001,5000
-3012742712,4.1,data scientist,Transfix,New York,New York City,NY,103,127000,153,Logistics & Supply Chain,Transportation & Logistics,51,200
-2918328768,3.7,data scientist,HBO,New York,New York City,NY,134,166000,203,TV Broadcast & Cable Networks,Media,1001,5000
-2661582104,5.0,data scientist,Kensho,New York,New York City,NY,121,148000,178,Internet,Information Technology,51,200
-2972562072,3.3,data scientist,ERGO Interactive,New York,New York City,NY,94,116000,141,Advertising & Marketing,Business Services,1,50
-3004758309,3.8,data scientist,Point72,New York,New York City,NY,117,146000,179,Investment Banking & Asset Management,Finance,1001,5000
-2945347217,3.6,data scientist,Bank of America,Jersey City,New York City,NJ,115,145000,180,Banks & Credit Unions,Finance,10000,
-2614626341,4.9,data scientist,Schireson,New York,New York City,NY,nan,,nan,Consulting,Business Services,51,200
-2913946925,3.8,senior data scientist,Remedy Partners,New York,New York City,NY,104,130000,164,Health Care Services & Hospitals,Health Care,201,500
-2928938516,4.5,data scientist,Liberty Lending,New York,New York City,NY,nan,,nan,Lending,Finance,51,200
-3016833741,4.9,data science instructor,NYC Data Science Academy,New York,New York City,NY,nan,,nan,Education Training Services,Education,1,50
-3018363955,3.4,data scientist,Eximius Group,New York,New York City,NY,nan,,nan,,,,
-2791229066,,portfolio scientist,Axegine,New York,New York City,NY,nan,,nan,,,1,50
+2557056478,4.7,data scientist,Intent Media,New York,New York,NY,120,140000,160,Internet,Information Technology,51,200
+2907798529,4.7,data scientist,Asana,New York,New York,NY,110,130000,155,Enterprise Software & Network Solutions,Information Technology,201,500
+2918666551,4.2,"data scientist, analytics",DoorDash,New York,New York,NY,88,105000,126,Express Delivery Services,Transportation & Logistics,501,1000
+3020663139,3.0,data scientist,comScore,New York,New York,NY,82,98000,117,Advertising & Marketing,Business Services,1001,5000
+3023658510,,senior data analyst,qualifIQ,New York,New York,NY,150,,200,,,1,50
+2849832848,3.7,senior data scientist,Farfetch,New York,New York,NY,110,130000,154,Internet,Information Technology,1001,5000
+3003962244,3.1,data scientist,Integral Ad Science,New York,New York,NY,129,156000,188,Internet,Information Technology,501,1000
+2915385011,3.8,data scientist,Phreesia,New York,New York,NY,111,132000,158,Health Care Services & Hospitals,Health Care,201,500
+2999485881,3.4,data scientist,Fora Financial,New York,New York,NY,70,89000,114,Investment Banking & Asset Management,Finance,51,200
+2962011591,4.3,data scientist,HotelTonight,New York,New York,NY,117,143000,172,"Hotels, Motels, & Resorts",Travel & Tourism,201,500
+2970926370,3.8,data scientist,7Park Data,New York,New York,NY,nan,,nan,Research & Development,Business Services,1,50
+2909723279,4.3,data scientist,Neoway,New York,New York,NY,80,100000,120,Enterprise Software & Network Solutions,Information Technology,201,500
+3012568456,3.5,data scientist,Verisk Analytics,Jersey City,New York,NJ,73,92000,114,Research & Development,Business Services,5001,10000
+2625550835,3.4,data scientist,Rent the Runway,New York,New York,NY,122,151000,188,Consumer Product Rental,Consumer Services,1001,5000
+2949882721,4.1,data scientist - summer intern,Spotify,New York,New York,NY,94,115000,139,Internet,Information Technology,1001,5000
+2997373293,3.2,data architect,JUST Capital,New York,New York,NY,110,134000,160,Grantmaking Foundations,Non-Profit,1,50
+2997424306,3.0,data scientist,Roku,New York,New York,NY,151,177000,211,Computer Hardware & Software,Information Technology,501,1000
+2841842473,3.1,data scientist,S&P Global Ratings,New York,New York,NY,109,137000,170,Financial Analytics & Research,Finance,1001,5000
+3012742712,4.1,data scientist,Transfix,New York,New York,NY,103,127000,153,Logistics & Supply Chain,Transportation & Logistics,51,200
+2918328768,3.7,data scientist,HBO,New York,New York,NY,134,166000,203,TV Broadcast & Cable Networks,Media,1001,5000
+2661582104,5.0,data scientist,Kensho,New York,New York,NY,121,148000,178,Internet,Information Technology,51,200
+2972562072,3.3,data scientist,ERGO Interactive,New York,New York,NY,94,116000,141,Advertising & Marketing,Business Services,1,50
+3004758309,3.8,data scientist,Point72,New York,New York,NY,117,146000,179,Investment Banking & Asset Management,Finance,1001,5000
+2945347217,3.6,data scientist,Bank of America,Jersey City,New York,NJ,115,145000,180,Banks & Credit Unions,Finance,10000,
+2614626341,4.9,data scientist,Schireson,New York,New York,NY,nan,,nan,Consulting,Business Services,51,200
+2913946925,3.8,senior data scientist,Remedy Partners,New York,New York,NY,104,130000,164,Health Care Services & Hospitals,Health Care,201,500
+2928938516,4.5,data scientist,Liberty Lending,New York,New York,NY,nan,,nan,Lending,Finance,51,200
+3016833741,4.9,data science instructor,NYC Data Science Academy,New York,New York,NY,nan,,nan,Education Training Services,Education,1,50
+3018363955,3.4,data scientist,Eximius Group,New York,New York,NY,nan,,nan,,,,
+2791229066,,portfolio scientist,Axegine,New York,New York,NY,nan,,nan,,,1,50
