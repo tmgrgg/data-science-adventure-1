@@ -20,10 +20,12 @@ def industries_and_job_listings_donut_chart():
     values = []
     labels = []
     data = []
+    
     for item in listy:
-        values.append(round((item[0]/len(return_industries()))*100, 2))
+        if (item[1] is not None):
+            values.append(round((item[0]/len(return_industries()))*100, 2))
 
-        labels.append(item[1])
+            labels.append(item[1])
     data = [{"values":values,
             "labels":labels,
             "domain": {"x": [0, .48]},
