@@ -1,0 +1,31 @@
+job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
+2987758383,4.7,data scientist,Niantic,San Francisco,San Francisco,CA,129,152000,181,Video Games,Media,201,500
+2280174543,4.5,data scientist,Stripe,San Francisco,San Francisco,CA,146,172000,202,Internet,Information Technology,501,1000
+2896758431,4.2,"data scientist, analytics",DoorDash,San Francisco,San Francisco,CA,108,127000,150,Express Delivery Services,Transportation & Logistics,501,1000
+2273130578,4.2,measurement data scientist,Pinterest,San Francisco,San Francisco,CA,133,157000,183,Computer Hardware & Software,Information Technology,1001,5000
+2523935275,3.8,data scientist,Flexport,San Francisco,San Francisco,CA,126,149000,176,Logistics & Supply Chain,Transportation & Logistics,501,1000
+3003044998,3.6,data scientist,TIBCO Software,San Francisco,San Francisco,CA,132,155000,183,Computer Hardware & Software,Information Technology,1001,5000
+2998525459,4.3,data scientist - maps,Uber,San Francisco,San Francisco,CA,132,156000,184,Computer Hardware & Software,Information Technology,10000,
+1059546238,4.1,data scientist - machine learning,Affirm,San Francisco,San Francisco,CA,138,161000,190,Lending,Finance,201,500
+2962408147,3.5,data scientist / analytic consultant 4,Wells Fargo,San Francisco,San Francisco,CA,99,122000,145,,,10000,
+3021120197,3.8,"data scientist, bim",Autodesk,San Francisco,San Francisco,CA,123,144000,169,Computer Hardware & Software,Information Technology,5001,10000
+2924569744,4.7,data scientist,Agari,Foster City,San Francisco,CA,134,157000,185,Enterprise Software & Network Solutions,Information Technology,51,200
+2924234937,4.3,data scientist,HotelTonight,San Francisco,San Francisco,CA,144,170000,200,"Hotels, Motels, & Resorts",Travel & Tourism,201,500
+3002954555,3.8,data scientist or data analyst,Autodesk,San Francisco,San Francisco,CA,123,144000,169,Computer Hardware & Software,Information Technology,5001,10000
+2883294136,4.0,data scientist,Ebates,San Mateo,San Francisco,CA,118,140000,166,Internet,Information Technology,501,1000
+2994508365,4.2,data scientist - rider growth,Uber,San Francisco,San Francisco,CA,132,156000,184,Computer Hardware & Software,Information Technology,10000,
+3012719127,4.3,"ai labs research scientist, intern",Uber,San Francisco,San Francisco,CA,103,122000,144,Computer Hardware & Software,Information Technology,10000,
+2972398520,,data scientist,Figure,San Francisco,San Francisco,CA,nan,,nan,Lending,Finance,51,200
+2924521852,2.8,data scientist,Numerator,San Francisco,San Francisco,CA,nan,,nan,IT Services,Information Technology,1001,5000
+2661375351,3.5,data scientist,BOLD,San Francisco,San Francisco,CA,145,170000,201,Internet,Information Technology,201,500
+2826786494,3.8,"data scientist 4, words with friends",Zynga,San Francisco,San Francisco,CA,147,171000,202,Video Games,Media,1001,5000
+3012777460,4.2,data scientist intern,Lyft,San Francisco,San Francisco,CA,85,101000,120,Transportation Management,Transportation & Logistics,1001,5000
+3005450351,4.4,data scientist,Metromile,San Francisco,San Francisco,CA,142,167000,196,Insurance Carriers,Insurance,201,500
+2996855426,4.4,senior data scientist,CircleUp,San Francisco,San Francisco,CA,174,208000,249,Venture Capital & Private Equity,Finance,51,200
+2983133349,4.0,data scientist,TrueAccord,San Francisco,San Francisco,CA,131,154000,182,Enterprise Software & Network Solutions,Information Technology,51,200
+3021863265,5.0,data scientist,Brex,San Francisco,San Francisco,CA,nan,,nan,Financial Transaction Processing,Finance,51,200
+3017955339,4.9,customer data scientist,Smartly.io,San Francisco,San Francisco,CA,104,122000,145,Enterprise Software & Network Solutions,Information Technology,51,200
+2644209594,4.1,data scientist,Clover Health,San Francisco,San Francisco,CA,122,144000,170,Health Care Services & Hospitals,Health Care,201,500
+2989413533,4.7,data scientist,Grand Rounds,San Francisco,San Francisco,CA,139,163000,193,Enterprise Software & Network Solutions,Information Technology,201,500
+2961512456,4.1,"senior data scientist, creative",Vungle,San Francisco,San Francisco,CA,114,133000,157,Internet,Information Technology,201,500
+2864686424,,lead data scientist,BitMEX,San Francisco,San Francisco,CA,nan,,nan,Stock Exchanges,Finance,51,200

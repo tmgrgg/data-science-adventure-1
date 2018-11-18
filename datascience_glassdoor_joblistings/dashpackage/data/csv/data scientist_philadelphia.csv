@@ -1,0 +1,31 @@
+job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
+2982426194,4.7,data scientist,Turnberry Solutions,Philadelphia,Philadelphia,PA,nan,,nan,IT Services,Information Technology,501,1000
+3022715289,3.5,data scientist,Cerner,Malvern,Philadelphia,PA,107,126000,150,Computer Hardware & Software,Information Technology,10000,
+3015912275,3.2,data scientist i,Vanguard,Malvern,Philadelphia,PA,79,100000,124,Investment Banking & Asset Management,Finance,10000,
+3000219640,3.2,research data scientist,Vanguard,Malvern,Philadelphia,PA,82,103000,127,Investment Banking & Asset Management,Finance,10000,
+3006735443,4.3,quantitative research analyst,STEVENS CAPITAL MANAGEMENT,Philadelphia,Philadelphia,PA,nan,,nan,Financial Analytics & Research,Finance,51,200
+3022701052,3.2,data scientist,Campbell Soup Company,Camden,Philadelphia,NJ,112,137000,168,Food & Beverage Manufacturing,Manufacturing,10000,
+2974708251,3.2,data scientist ii,Vanguard,Malvern,Philadelphia,PA,79,99000,122,Investment Banking & Asset Management,Finance,10000,
+3008915501,3.3,data scientist/ contract,Workbridge Associates,Philadelphia,Philadelphia,PA,nan,,nan,Staffing & Outsourcing,Business Services,51,200
+3009699159,3.2,data scientist,Marlin Equipment Finance,Mount Laurel,Philadelphia,NJ,94,117000,144,Lending,Finance,201,500
+2618863741,4.5,control systems data scientist,Kulicke and Soffa,Fort Washington,Philadelphia,PA,100,121000,146,Electrical & Electronic Manufacturing,Manufacturing,1001,5000
+2981849719,5.0,data scientist,Guru Technologies,Philadelphia,Philadelphia,PA,nan,,nan,Enterprise Software & Network Solutions,Information Technology,51,200
+3018644806,,data scientist,Radus Tek Services,Malvern,Philadelphia,PA,76,97000,125,,,1,50
+3011316153,3.2,data scientist,IT Pros,Philadelphia,Philadelphia,PA,nan,,nan,IT Services,Information Technology,1,50
+2999577581,5.0,data scientist,Job Juncture,Cherry Hill,Philadelphia,NJ,nan,,nan,Staffing & Outsourcing,Business Services,1001,5000
+3002840885,3.6,data scientist,Lincoln Financial,Radnor,Philadelphia,PA,81,102000,126,Insurance Carriers,Insurance,5001,10000
+3022337454,4.4,data scientist,Pioneer Consulting Services LLC,Mount Laurel,Philadelphia,NJ,nan,,nan,,,1,50
+3023674419,,data scientist,Infinity Tech Group Inc,Norristown,Philadelphia,PA,62,80000,104,,,1,50
+3023254341,5.0,data scientist,newcareers,Cherry Hill,Philadelphia,NJ,nan,,nan,Staffing & Outsourcing,Business Services,1,50
+2994592898,,data scientist,Drexel University Urban Health Collaborative,Philadelphia,Philadelphia,PA,nan,,nan,,,,
+2959467042,3.6,data scientist,Tata Consultancy Services (North America),Philadelphia,Philadelphia,PA,81,99000,120,IT Services,Information Technology,1001,5000
+3023185827,3.0,"scientist, lab",West Pharmaceutical Services,Exton,Philadelphia,PA,nan,,nan,Health Care Products Manufacturing,Manufacturing,5001,10000
+2908310210,5.0,data scientist,RS Energy Group,Conshohocken,Philadelphia,PA,nan,,nan,Oil & Gas Services,"Oil, Gas, Energy & Utilities",201,500
+2964215708,4.2,data scientist,Pennsylvania State University,Far-A-Field,Philadelphia,PA,nan,,nan,Colleges & Universities,Education,10000,
+3017265085,3.6,data scientist,IntegriChain,Philadelphia,Philadelphia,PA,57,70000,84,IT Services,Information Technology,51,200
+2614236540,3.0,data scientist,Numeric Recruiting & Staffing,Philadelphia,Philadelphia,PA,93,118000,148,,,1,50
+3011601153,4.5,data scientist,Smith Hanley Associates,Philadelphia,Philadelphia,PA,nan,,nan,Staffing & Outsourcing,Business Services,1,50
+3018670687,3.4,data scientist,Page Group,Chesterbrook,Philadelphia,PA,nan,,nan,,,201,500
+2974708904,3.2,principal data scientist,Vanguard,Malvern,Philadelphia,PA,180,215000,250,Investment Banking & Asset Management,Finance,10000,
+2993629128,3.6,senior quantitative analyst/quantitative analyst iii,Federal Reserve Bank of Philadelphia,Philadelphia,Philadelphia,PA,98,121000,155,Financial Transaction Processing,Finance,501,1000
+2955696928,3.6,senior quantitative analyst / quantitative analyst iii,Federal Reserve Bank of Philadelphia,Philadelphia,Philadelphia,PA,98,121000,155,Financial Transaction Processing,Finance,501,1000

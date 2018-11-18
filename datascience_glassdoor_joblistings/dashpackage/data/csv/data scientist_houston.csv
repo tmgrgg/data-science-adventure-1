@@ -1,0 +1,30 @@
+job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
+2848973669,4.2,data scientist,N.F Smith & Associates,Houston,Houston,TX,73,87000,104,Wholesale,Business Services,201,500
+3021342588,3.9,data scientist,Kforce,Houston,Houston,TX,nan,,nan,Staffing & Outsourcing,Business Services,10000,
+2744300401,3.9,data scientist (eg),PROS,Houston,Houston,TX,90,107000,127,Computer Hardware & Software,Information Technology,1001,5000
+2951327810,3.8,data scientist - aws professional services oil & gas,Amazon,Houston,Houston,TX,112,132000,159,Internet,Information Technology,10000,
+3005664245,3.8,research data scientist,ExxonMobil,Houston,Houston,TX,84,103000,128,Oil & Gas Exploration & Production,"Oil, Gas, Energy & Utilities",10000,
+2998852452,3.5,data scientist,Schlumberger,Houston,Houston,TX,103,126000,153,Oil & Gas Services,"Oil, Gas, Energy & Utilities",10000,
+3020700559,3.9,data scientist,Chevron,Houston,Houston,TX,122,147000,184,Oil & Gas Exploration & Production,"Oil, Gas, Energy & Utilities",10000,
+3018645296,4.0,data scientist,Infinity Consulting Solutions,Sugar Land,Houston,TX,nan,,nan,Consulting,Business Services,501,1000
+2979357899,3.3,data scientist,Sysco,Houston,Houston,TX,94,116000,148,Wholesale,Business Services,10000,
+3007787468,,data scientist - oil & gas,Expedien,Houston,Houston,TX,nan,,nan,,,51,200
+2907714845,4.8,data scientist,"GreenZone Solutions, Inc.",Houston,Houston,TX,nan,,nan,,,,
+2887839796,3.5,data scientist,Hewlett Packard Enterprise,Houston,Houston,TX,91,107000,128,,,,
+2956140930,4.5,data scientist,Rice University,Houston,Houston,TX,74,92000,112,Colleges & Universities,Education,1001,5000
+2820707092,3.0,data scientist,KBRwyle,Houston,Houston,TX,88,108000,131,,,,
+3016907220,3.9,data scientist,Computer Futures Solutions,Houston,Houston,TX,69,85000,106,IT Services,Information Technology,201,500
+2968425833,,data scientist,CGG Veritas,Houston,Houston,TX,nan,,nan,,,,
+2993636792,3.6,data scientist,Tata Consultancy Services (North America),Houston,Houston,TX,86,104000,125,IT Services,Information Technology,1001,5000
+2956634685,3.4,data scientist,Kelvin,Houston,Houston,TX,nan,,nan,,,1,50
+2950728144,,data scientist,Mercury Data Science,Houston,Houston,TX,nan,,nan,,,,
+2982582062,3.9,sr. data scientist,PROS,Houston,Houston,TX,94,111000,132,Computer Hardware & Software,Information Technology,1001,5000
+2987265109,3.4,staff data scientist,"Baker Hughes, a GE company",Houston,Houston,TX,136,166000,201,,,10000,
+2994467057,4.0,data scientist,Diverse Lynx,Houston,Houston,TX,91,113000,138,,,51,200
+2633024598,4.2,data scientist,"SaveSoft, Inc",Houston,Houston,TX,nan,,nan,,,1,50
+2953118545,,data scientist,Smith and Associates,Houston,Houston,TX,nan,,nan,,,1,50
+3004592521,,data scientist,SSN Group LLC,Houston,Houston,TX,81,102000,130,,,1,50
+2997785077,3.7,data scientist,TATA Consultancy Services,Houston,Houston,TX,84,104000,132,Computer Hardware & Software,Information Technology,10000,
+2837714735,3.3,data scientist,Robert Half Technology,Houston,Houston,TX,nan,,nan,Staffing & Outsourcing,Business Services,10000,
+2934104172,3.9,health scientist,Rimkus Consulting,Houston,Houston,TX,nan,,nan,Consulting,Business Services,501,1000
+3012433592,3.2,principal data scientist consultant,DNV GL,Houston,Houston,TX,128,150000,178,Energy,"Oil, Gas, Energy & Utilities",10000,

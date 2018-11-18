@@ -1,0 +1,47 @@
+Repository : project1/datascience_glassdoor_joblistings
+      ├── run.py
+      ├── TOM READ
+      ├── dashapackage
+      │   ├── __init__.py
+      │   ├── console.py
+      │   ├── models.py
+      │   ├── seed.py
+      │   ├── queries.py
+      │   ├── dashboard.py
+      │   ├── job_listings.db
+      │   ├── data
+      │   │   ├── csv
+      │   │   ├── pkl
+
+run.py:
+      Runs the dash app and is in the directory above the other .py files
+dashpackage :
+      __init__.py :
+         Instantiate flask server (server)
+              * server will act as the engine to create and talk to the db file
+         Instantiate a SQLALCHEMY query object, db, with the server as argument
+              * db will use server to access the database for queries
+         Instantiate a dash app with the flask server and the route '/dashboard' as arguments
+              * app will use the flask server instead of dash's default server to grab data from
+                the db
+              * app will use the route specified ('/dashboard/') to handle visualizations
+      models.py:
+        imports db from __init__
+        defines classes using db
+        creates schema using db
+      seed.py:
+        defines the following functions:
+          create_cities(), create_jobs(), create_companies(), create_industries()
+          * Functions to Instantiate City, Industry, Company, Job objects
+          get_filepaths() & pd_read_csv(file_paths)
+          * Functions to get file paths of & read all CSV files in the data subdirectory
+          build_database()
+          * Function that ties in creator and file path finder functions
+          populate_db()
+          * Function to add all instances to data base using db
+      console.py
+          import * from SEED
+          calls the populate_db() function and waits for input to do commit
+      queries.py (WIP)
+          will have the query functions that will extract data in the form of dictionaries
+          of x and y values so that we can use that for inputing as data in the dashboard.

@@ -1,0 +1,32 @@
+job_id,rating,position,company,job_city,location_search,job_state_code,sal_low,sal_est,sal_high,industry,sector,size_small,size_large
+2889564147,4.3,"data scientist, strategy",ServiceTitan,Los Angeles,Los Angeles,CA,112,131000,156,Computer Hardware & Software,Information Technology,501,1000
+2789392047,3.6,senior data scientist - clean energy,Southern California Edison,Rosemead,Los Angeles,CA,126,150000,180,Utilities,"Oil, Gas, Energy & Utilities",10000,
+2945204977,3.5,data scientist - entity resolution,Spokeo,Pasadena,Los Angeles,CA,96,114000,135,Internet,Information Technology,201,500
+2905612987,5.0,junior data scientist,Fama (CA),Playa Vista,Los Angeles,CA,nan,,nan,Internet,Information Technology,1,50
+2933466481,3.9,"data scientist - analytics, experiences",Airbnb,Los Angeles,Los Angeles,CA,112,133000,159,"Hotels, Motels, & Resorts",Travel & Tourism,1001,5000
+2532207651,4.4,senior data scientist,Honey,Los Angeles,Los Angeles,CA,132,154000,183,Internet,Information Technology,51,200
+3002096712,5.0,data scientist (entry level),HIRECLOUT,Los Angeles,Los Angeles,CA,nan,,nan,Staffing & Outsourcing,Business Services,1,50
+2520828276,4.2,associate data scientist,Factual,Los Angeles,Los Angeles,CA,125,146000,173,Computer Hardware & Software,Information Technology,51,200
+2954555000,3.7,data scientist,The Aerospace Corporation,El Segundo,Los Angeles,CA,108,130000,157,Research & Development,Business Services,1001,5000
+2882229347,3.0,data scientist,Snapchat,Los Angeles,Los Angeles,CA,128,150000,177,Computer Hardware & Software,Information Technology,1001,5000
+2986774299,5.0,machine learning engineer / data scientist,Kensho,Los Angeles,Los Angeles,CA,126,149000,178,Internet,Information Technology,51,200
+2994148623,3.9,data science intern,Taboola,Los Angeles,Los Angeles,CA,nan,,nan,Advertising & Marketing,Business Services,1001,5000
+3002252684,3.4,data scientist,Lab126,Santa Monica,Los Angeles,CA,98,116000,138,Computer Hardware & Software,Information Technology,1001,5000
+3013068792,3.9,data scientist,Kaiser Permanente,Pasadena,Los Angeles,CA,112,135000,165,Health Care Services & Hospitals,Health Care,10000,
+2720740568,3.0,data scientist,TrueCar,Santa Monica,Los Angeles,CA,107,126000,150,Internet,Information Technology,501,1000
+2987543208,4.7,data scientist,Bain & Company Inc,Los Angeles,Los Angeles,CA,111,134000,164,Consulting,Business Services,5001,10000
+1900994289,3.8,"data scientist, machine learning",ZestFinance,Los Angeles,Los Angeles,CA,125,149000,178,Financial Analytics & Research,Finance,51,200
+2997818708,3.8,data scientist,Amazon,Santa Monica,Los Angeles,CA,119,140000,168,Internet,Information Technology,10000,
+2811702240,3.8,data scientist,NBCUniversal,Universal City,Los Angeles,CA,126,152000,185,TV Broadcast & Cable Networks,Media,10000,
+3021923615,,data scientist,"Fetch Recruiting, Inc.",Los Angeles,Los Angeles,CA,nan,,nan,Staffing & Outsourcing,Business Services,1,50
+2928687436,3.2,data scientist,Tradesy,Santa Monica,Los Angeles,CA,100,122000,149,Internet,Information Technology,51,200
+2951155380,3.7,data scientist,CrowdStrike,Los Angeles,Los Angeles,CA,117,137000,163,Enterprise Software & Network Solutions,Information Technology,1001,5000
+3017120811,3.7,data scientist,Sharp Decisions,Torrance,Los Angeles,CA,nan,,nan,IT Services,Information Technology,201,500
+2951064348,3.5,data scientist,Assembly,Los Angeles,Los Angeles,CA,113,138000,168,Advertising & Marketing,Business Services,5001,10000
+2683584300,4.3,data scientist,Tala,Santa Monica,Los Angeles,CA,93,109000,131,Lending,Finance,51,200
+2735399182,3.5,data scientist,SupplyFrame,Los Angeles,Los Angeles,CA,102,120000,143,Advertising & Marketing,Business Services,1,50
+2855829136,4.0,data scientist,"DeepCurrent Technologies, Inc.",Los Angeles,Los Angeles,CA,nan,,nan,,,1,50
+3007117067,5.0,data scientist,Conversion Logic,Los Angeles,Los Angeles,CA,nan,,nan,Computer Hardware & Software,Information Technology,1,50
+3005067078,4.3,data scientist,Career Movement,Los Angeles,Los Angeles,CA,nan,,nan,IT Services,Information Technology,1,50
+2558993565,3.9,sr. data scientist,Taboola,Los Angeles,Los Angeles,CA,157,185000,217,Advertising & Marketing,Business Services,1001,5000
+3023192416,4.0,data scientist,CyberCoders,Los Angeles,Los Angeles,CA,nan,,nan,Staffing & Outsourcing,Business Services,201,500
