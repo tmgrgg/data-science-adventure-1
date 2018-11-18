@@ -1,6 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
-# from dashpackage.layouts import *
+from dashpackage.layouts import donut_layout
 from dashpackage.queries import *
 from dashpackage import app
 
@@ -12,7 +12,7 @@ app.layout = html.Div(children=[
         id = "inudstry_job_data",
         figure = {
              'data' : data,
-             'layout' : {"title ": 'Dash Data Visualization'}
+             'layout' : donut_layout
 
             })
 ])

@@ -9,17 +9,8 @@ donut_layout = {
                     "size": 20
                 },
                 "showarrow": False,
-                "text": "GHG",
+                "text": "DSJOBS",
                 "x": 0.20,
-                "y": 0.5
-            },
-            {
-                "font": {
-                    "size": 20
-                },
-                "showarrow": False,
-                "text": "CO2",
-                "x": 0.8,
                 "y": 0.5
             }
         ]

@@ -26,8 +26,11 @@ def industries_and_job_listings_donut_chart():
         labels.append(item[1])
     data = [{"values":values,
             "labels":labels,
+            "domain": {"x": [0, .48]},
             "name": "Data Science Jobs by industry",
             "type": "pie",
+            "textposition":"inside",
+            "hoverinfo":"label+percent+name",
             "hole": .4,}]
     # data = go.Pie (values = values, labels = labels)
 
