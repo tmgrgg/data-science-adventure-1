@@ -1,4 +1,4 @@
-from __init__ import db
+from dashpackage.__init__ import db
 
 import pdb
 

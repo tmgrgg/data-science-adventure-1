@@ -1,5 +1,6 @@
-from __init__ import db
-from models import  Job, City, Company, Industry
+from dashpackage.__init__ import db
+from dashpackage.models import  Job, City, Company, Industry
+from sqlalchemy import func
 import pdb
 
 
@@ -12,15 +13,24 @@ def return_industries():
 # print(return_industries())
 
 
-def top_10_industries_witht_highest_job_listings():
+def industries_and_job_listings_donut_chart():
     listy =db.session.query(func.count(Job.id), Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).all()
+    # pdb.set_trace()
+    values = []
+    labels = []
+    for item in listy:
+        values.append(round((item[0]/len(return_industries()))*100, 2))
 
-pdb.set_trace
-#     top_10 = []
-#     for item in listy:
-#         if item[1]==None:
-#             listy.remove(item)
-#             return listy[:9]
+        labels.append(item[1])
+    data = [{"values":values,
+        "labels":labels,
+        "domain": {"x": [0, .48]},
+        "name": "Data Science Jobs by industry",
+        "hoverinfo":"label+percent+name",
+        "hole": .4,
+        "type": "donut"}]
+
+    return data
 #
 #
 # print(top_10_industries_witht_highest_job_listings())

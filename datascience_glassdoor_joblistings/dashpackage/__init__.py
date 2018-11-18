@@ -14,3 +14,6 @@ db = SQLAlchemy(server)
 
 #initializing new dash app and connecting to flask server
 app = dash.Dash(__name__, server=server,url_base_pathname='/dashboard/')
+
+
+from dashpackage.dashboard import * 
