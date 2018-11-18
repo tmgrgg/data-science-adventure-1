@@ -3,6 +3,8 @@ from dashpackage.models import  Job, City, Company, Industry
 from sqlalchemy import func
 import plotly.graph_objs as go
 import pdb
+import plotly.plotly as py
+import pandas as pd
 
 
 def return_companies():
@@ -39,6 +41,156 @@ def industries_and_job_listings_donut_chart():
 
     return data
 
+def interactive_map_data_example(): 
+    #create pandas dataframe from sql
+    #listy = db.session.query(Job).all()
+    #print("INTERACTIVE MAP DATA: ", listy, "END INTERACTIVE MAP DATA")
+    #return None
+    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
+    df.head()
+    
+    df['text'] = df['airport'] + '' + df['city'] + ', ' + df['state'] + '' + 'Arrivals: ' + df['cnt'].astype(str)
+    
+    scl = [ [0,"rgb(5, 10, 172)"],[0.35,"rgb(40, 60, 190)"],[0.5,"rgb(70, 100, 245)"],\
+        [0.6,"rgb(90, 120, 245)"],[0.7,"rgb(106, 137, 247)"],[1,"rgb(220, 220, 220)"] ]
+    
+    data = [ dict(
+            type = 'scattergeo',
+            locationmode = 'USA-states',
+            lon = df['long'],
+            lat = df['lat'],
+            text = df['text'],
+            mode = 'markers',
+            marker = dict(
+                size = 8,
+                opacity = 0.8,
+                reversescale = True,
+                autocolorscale = False,
+                symbol = 'square',
+                line = dict(
+                    width=1,
+                    color='rgba(102, 102, 102)'
+                ),
+                colorscale = scl,
+                cmin = 0,
+                color = df['cnt'],
+                cmax = df['cnt'].max(),
+                colorbar=dict(
+                    title="Incoming flightsFebruary 2011"
+                )
+            ))]
+    
+    layout = dict(
+            title = 'Most trafficked US airports<br>(Hover for airport names)',
+            colorbar = True,
+            geo = dict(
+                scope='usa',
+                projection=dict( type='albers usa' ),
+                showland = True,
+                landcolor = "rgb(250, 250, 250)",
+                subunitcolor = "rgb(217, 217, 217)",
+                countrycolor = "rgb(217, 217, 217)",
+                countrywidth = 0.5,
+                subunitwidth = 0.5
+            ),
+        )
+    
+    return data, layout
+
+def to_dollars(x_thousands):
+    return '$' + str(int(x_thousands*1000))
+
+def interactive_map_data(): 
+    #create pandas dataframe from sql
+    #listy = db.session.query(Job).all()
+    #print("INTERACTIVE MAP DATA: ", listy, "END INTERACTIVE MAP DATA")
+    #return None
+    
+    #group_by as_index=False to keep it as a dataframe prolly
+    airport_df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
+    print(airport_df)
+    
+    airport_df = airport_df.groupby(['city'])['long', 'lat'].max()
+    
+    print(airport_df.loc['New York']['long'])
+
+    df = pd.read_sql(db.session.query(Job, City).join(City).statement, db.session.bind) 
+
+    
+   # pdb.set_trace()
+    
+    city_df = df.groupby(['name'])['salary_estimated'].mean()
+    city_df = city_df.to_frame()
+    #city_df = city_df.reset_index()
+   # print(city_df)
+
+    city_df['text'] = city_df.index + ', mean Glassdoor est. salary = ' + city_df['salary_estimated'].apply(to_dollars)
+    
+    city_df['long'] = [0.0,0.0,0.0,0.0,0.0,0.0]
+    city_df['lat'] = [0.0,0.0,0.0,0.0,0.0,0.0]
+    
+    for city in city_df.index:
+        
+        #city_df.loc[]
+        print('setting ' + city + ' lat from ' + str(city_df.loc[city]['lat']) + ' to ' + str(airport_df.loc[city]['lat']))
+        city_df.at[city, 'lat'] = airport_df.loc[city]['lat']
+        
+        print('setting ' + city + ' long from ' + str(city_df.loc[city]['long']) + ' to ' + str(airport_df.loc[city]['long']))
+        city_df.at[city, 'long'] = airport_df.loc[city]['long']
+
+    print(city_df)
+   
+   
+   # city_df['text'] = city_df['name'] + ', mean Glassdoor est. salary = ' + str(city_df[1])
+    
+    
+    scl = [ [0,"rgb(172, 10, 5)"],[0.35,"rgb(190, 60, 40)"],[0.5,"rgb(245, 100, 70)"],\
+        [0.6,"rgb(245, 120, 90)"],[0.7,"rgb(247, 137, 106)"],[1,"rgb(220, 220, 220)"] ]
+    
+    data = [ dict(
+            type = 'scattergeo',
+            locationmode = 'USA-states',
+            lon = city_df['long'],
+            lat = city_df['lat'],
+            text = city_df['text'],
+            mode = 'markers',
+            marker = dict(
+                size = 8,
+                opacity = 0.8,
+                reversescale = True,
+                autocolorscale = False,
+                symbol = 'square',
+                line = dict(
+                    width=1,
+                    color='rgba(102, 102, 102)'
+                ),
+                colorscale = scl,
+                cmin = city_df['salary_estimated'].min(),
+                color = city_df['salary_estimated'],
+                cmax = city_df['salary_estimated'].max(),
+                colorbar=dict(
+                    title="Mean estimated Glassdoor salary (2018)"
+                )
+            ))]
+    
+    layout = dict(
+            title = 'Mean Data Science Salaries',
+            colorbar = True,
+            geo = dict(
+                scope='usa',
+                projection=dict( type='albers usa' ),
+                showland = True,
+                landcolor = "rgb(250, 250, 250)",
+                subunitcolor = "rgb(217, 217, 217)",
+                countrycolor = "rgb(217, 217, 217)",
+                countrywidth = 0.5,
+                subunitwidth = 0.5
+            ),
+        )
+    
+    return data, layout
+
+   # return data, layout
 print('******Done with Queries******')
 #
 #

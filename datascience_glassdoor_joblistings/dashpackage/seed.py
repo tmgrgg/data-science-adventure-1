@@ -1,5 +1,5 @@
-from models import City, Industry, Company, Job
-from __init__ import db
+from dashpackage.models import City, Industry, Company, Job
+from dashpackage.__init__ import db
 import pandas as pd
 from os import listdir
 import pdb
@@ -11,7 +11,7 @@ import pdb
 
 def create_cities():
     print('<<<<<<<creating cities()>>>>>>>>')
-    df = pd.read_csv('data/csv/city_expenses.csv')
+    df = pd.read_csv('dashpackage/data/csv/city_expenses.csv')
     print('test printing df stats:', df.describe())
     cities = []
     for i in range(len(df)):
@@ -75,7 +75,7 @@ def create_jobs(jobs, df, companies, industries, cities):
 
 ###########Functions to Get File Paths of & Read all CSV files################################################
 def get_filepaths():
-    path = 'data/csv'
+    path = 'dashpackage/data/csv'
     csv_filenames = list(filter(lambda f: '.csv' in f and 'data' in f,listdir(path)))
     file_paths = [path+'/'+name for name in csv_filenames]
     return file_paths
