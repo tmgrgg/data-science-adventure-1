@@ -41,6 +41,49 @@ def industries_and_job_listings_donut_chart():
 
     return data
 
+def get_industry_pie_chart(city):
+    #need to change this query!
+    #df = pd.read_sql(db.session.query( Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).statement, db.session.bind) 
+    
+    #this gets us to a place where we just have san fran!
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(func.count(Job.id), City, Industry.name).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    df = pd.read_sql(db.session.query(Job, Industry).join(City).join(Industry).filter(City.name == city).statement, db.session.bind)
+
+    #could also easily vtake mean of estimated salary to get the mean salary per industry!
+    print('DF BEFORE GROUP: ', df)
+    df = df.groupby(['name'])['title'].count()
+   # df = df.to_frame()
+    pd.set_option('display.max_columns', None)
+    
+    df.to_csv('my_csv.csv')
+
+    print('JOINED', df)
+
+    
+   # print('listy!', listy)
+    #listy =db.session.query(func.count(Job.id), Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).all()
+    # pdb.set_trace()
+    values = df.values
+    labels = df.index
+    data = []
+    
+    data = [{"values":values,
+             "title":city + " jobs<br>by Industry",
+            "labels":labels,
+            "domain": {"x": [0, .48]},
+            "name": "Data Science Jobs by Industry",
+            "type": "pie",
+            "textposition":"outside",
+            "showlegend":False,
+            "hoverinfo":"label+percent+name",
+            "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
+            "hole": .4,}]
+    # data = go.Pie (values = values, labels = labels)
+    
+    return data
+
 def interactive_map_data_example(): 
     #create pandas dataframe from sql
     #listy = db.session.query(Job).all()
@@ -99,6 +142,19 @@ def interactive_map_data_example():
 
 def to_dollars(x_thousands):
     return '${:,}'.format(int(x_thousands*1000))
+
+def get_stats(city):
+    print('GOT INTO STATS AT LEAST')
+    df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).statement, db.session.bind)
+    
+    stats = {'salary_estimated_hi': to_dollars(df['salary_estimated'].max()),
+             'salary_estimated_lo': to_dollars(df['salary_estimated'].min()),
+             'expenses': to_dollars(df['expenses'].max())
+            }
+    
+    print('STATS:', stats)
+    return stats
+
 
 def interactive_map_data(): 
     #create pandas dataframe from sql
