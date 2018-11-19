@@ -98,7 +98,7 @@ def interactive_map_data_example():
     return data, layout
 
 def to_dollars(x_thousands):
-    return '$' + str(int(x_thousands*1000))
+    return '${:,}'.format(int(x_thousands*1000))
 
 def interactive_map_data(): 
     #create pandas dataframe from sql
@@ -124,7 +124,7 @@ def interactive_map_data():
     #city_df = city_df.reset_index()
    # print(city_df)
 
-    city_df['text'] = city_df.index + ', mean Glassdoor est. salary = ' + city_df['salary_estimated'].apply(to_dollars)
+    city_df['text'] = city_df.index + ': ' + city_df['salary_estimated'].apply(to_dollars)
     
     city_df['long'] = [0.0,0.0,0.0,0.0,0.0,0.0]
     city_df['lat'] = [0.0,0.0,0.0,0.0,0.0,0.0]
@@ -153,15 +153,16 @@ def interactive_map_data():
             lon = city_df['long'],
             lat = city_df['lat'],
             text = city_df['text'],
+            hoverinfo = 'text',
             mode = 'markers',
             marker = dict(
                 size = 8,
                 opacity = 0.8,
                 reversescale = True,
                 autocolorscale = False,
-                symbol = 'square',
+                symbol = 'circle',
                 line = dict(
-                    width=1,
+                    width=2,
                     color='rgba(102, 102, 102)'
                 ),
                 colorscale = scl,
@@ -169,12 +170,15 @@ def interactive_map_data():
                 color = city_df['salary_estimated'],
                 cmax = city_df['salary_estimated'].max(),
                 colorbar=dict(
-                    title="Mean estimated Glassdoor salary (2018)"
+                    title='',
+                    #width=30,
+                    tickprefix='$',
+                    ticksuffix='K'
                 )
             ))]
     
     layout = dict(
-            title = 'Mean Data Science Salaries',
+            #title = 'Mean Glassdoor Estimed Data<br> Science Salaries for US cities',
             colorbar = True,
             geo = dict(
                 scope='usa',
@@ -183,10 +187,12 @@ def interactive_map_data():
                 landcolor = "rgb(250, 250, 250)",
                 subunitcolor = "rgb(217, 217, 217)",
                 countrycolor = "rgb(217, 217, 217)",
-                countrywidth = 0.5,
-                subunitwidth = 0.5
+                #countrywidth = 0.5,
+                #subunitwidth = 0.5
             ),
         )
+            
+    
     
     return data, layout
 
