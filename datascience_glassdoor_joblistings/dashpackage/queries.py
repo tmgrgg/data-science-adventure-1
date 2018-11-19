@@ -6,7 +6,16 @@ import pdb
 import plotly.plotly as py
 import pandas as pd
 
-pie_chart_colors = {"marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']}}
+pie_chart_colors = {"marker": {"colors" : ['rgb(179,226,205)',\
+                                          'rgb(247,247,247)','rgb(186,228,188)',\
+                                          'rgb(237,248,233)','rgb(35,139,69)',\
+                                          'rgb(116,196,118)','rgb(150,150,150)',\
+                                          'rgb(82,82,82)','rgb(161,218,180)',\
+                                          'rgb(240,249,232)', 'rgb(115,115,115)'\
+                                          ,'rgb(35,139,69)','rgb(116,196,118)',\
+                                          'rgb(35,139,69)','rgb(99,99,99)',\
+                                          'rgb(204,204,204)','rgb(186,228,179)'\
+                                          ,'rgb(150,150,150)']}}
 
 def return_companies():
     return [company.name for company in db.session.query(Company).all() ]
@@ -79,7 +88,7 @@ def get_industry_pie_chart(city):
             "textposition":"outside",
             "showlegend":False,
             "hoverinfo":"label+percent+name",
-            "markers":pie_chart_colors['marker'],
+            "marker":pie_chart_colors['marker'],
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
             "hole": .4,}]
             
@@ -99,6 +108,66 @@ def get_industry_pie_chart(city):
             )
     # data = go.Pie (values = values, labels = labels)
     
+    return data, layout
+
+
+
+def get_industry_pie_chart2(city):
+    #need to change this query!
+    #df = pd.read_sql(db.session.query( Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).statement, db.session.bind)
+
+    #this gets us to a place where we just have san fran!
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(func.count(Job.id), City, Industry.name).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    df = pd.read_sql(db.session.query(Job, Industry).join(City).join(Industry).filter(City.name == city).statement, db.session.bind)
+
+    #could also easily vtake mean of estimated salary to get the mean salary per industry!
+    print('DF BEFORE GROUP: ', df)
+    df = df.groupby(['name'])['title'].count()
+   # df = df.to_frame()
+    pd.set_option('display.max_columns', None)
+
+    df.to_csv('my_csv.csv')
+
+    print('JOINED', df)
+
+
+   # print('listy!', listy)
+    #listy =db.session.query(func.count(Job.id), Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).all()
+    # pdb.set_trace()
+    values = df.values
+    labels = df.index
+    data = []
+
+    data = [{"values":values,
+             "title":city + " jobs<br>by Industry",
+            "labels":labels,
+            "domain": {"x": [0, .48]},
+            "name": "Data Science Jobs by Industry",
+            "type": "pie",
+            "textposition":"outside",
+            "showlegend":False,
+            "hoverinfo":"label+percent+name",
+            "marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']},
+            "hole": .4,}]
+    
+    layout = go.Layout(
+            autosize=False,
+            width=500,
+            height=500,
+            margin=go.layout.Margin(
+                    l=120,
+                    r=20,
+                    b=20,
+                    t=20,
+                    pad=4
+            ),
+            #paper_bgcolor='#7f7f7f',
+            #plot_bgcolor='#c7c7c7'
+            )
+    # data = go.Pie (values = values, labels = labels)
+
     return data, layout
 
 def get_samira_chart():
@@ -153,7 +222,7 @@ def get_sector_pie_chart(city):
             "name": "Data Science Jobs by Sector",
             "type": "pie",
             "textposition":"outside",
-            "markers":pie_chart_colors['marker'],
+            "marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']},
             "showlegend":False,
             "hoverinfo":"label+percent+name",
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],

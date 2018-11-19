@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from dashpackage.layouts import donut_layout
-from dashpackage.queries import interactive_map_data, get_industry_pie_chart, get_stats, get_sector_pie_chart, get_samira_chart
+from dashpackage.queries import interactive_map_data, get_industry_pie_chart2, get_stats, get_sector_pie_chart, get_samira_chart
 from dashpackage import app
 import json
 import pdb
@@ -142,7 +142,7 @@ def update_pie_chart1(clickData):
     #hacky way of getting city name
     print('clicked on city = ', clickData['points'][0]['text'].split(':')[0])
     city_name = clickData['points'][0]['text'].split(':')[0]
-    data, layout = get_industry_pie_chart(city_name)
+    data, layout = get_industry_pie_chart2(city_name)
     return {'data' : data, 'layout': layout}
 
 @app.callback(Output('pie2', 'figure'), [Input('map', 'clickData')])
