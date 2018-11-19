@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from dashpackage.layouts import donut_layout
-from dashpackage.queries import interactive_map_data, get_industry_pie_chart, get_stats
+from dashpackage.queries import interactive_map_data, get_industry_pie_chart, get_stats, get_sector_pie_chart
 from dashpackage import app
 import json
 import pdb
@@ -57,61 +57,57 @@ layout = [
                         style={'width':'100%', 'height':'100%'}
                     ),
                 ],
-                style={'width':'50%', 'display': 'inline-block'}
-            ),
+                style={'width':'100%', 'display': 'inline-block'}
+            )
                 
+        ],
+                
+        className="row",
+        style={'width': '100%', 'display': 'inline-block'}
+    ),
+            
+          
+            
+    
+       
+    html.Div(
+            [
+            html.Div([
+                    html.H2('**Basic Statistics**'),
+                    html.Pre(id='stats', style={'border': 'thin lightgrey solid', 'overflowX': 'scroll'})
+                ],
+                style={'width': '50%', 'display': 'inline-block'}
+                ),
             html.Div(
                 [
                     dcc.Graph(
                         id="pie",
                        # style={"height": "90%", "width": "98%"},
+                        figure=geomap(),
                         config=dict(displayModeBar=False),
-                        style={'width':'100%', 'height':'100%'}
+                        style={'width':'90%', 'height':'90%'}
                     ),
                 ],
-                 style={'width':'50%', 'display': 'inline-block'}
+                style={'width':'25%', 'display': 'inline-block'}
+            ),
+                html.Div(
+                [
+                    dcc.Graph(
+                        id="pie2",
+                       # style={"height": "90%", "width": "98%"},
+                        figure=geomap(),
+                        config=dict(displayModeBar=False),
+                        style={'width':'90%', 'height':'90%'}
+                    ),
+                ],
+                style={'width':'25%', 'display': 'inline-block'}
             )
-                
-                
-                 
-                
-#            html.Div([
-#                    dcc.Markdown("""
-#                                   **Hover Data**
-#
-#                    Mouse over values in the graph.
-#                    """),
-#                    html.Pre(id='click-data', style={'border': 'thin lightgrey solid', 'overflowX': 'scroll'})
-#                    ] )
-
-                
-
-            
-#             html.Div(
-#                [
-#                    html.P("Leads count per state" ),
-#                    dcc.Graph(
-#                        id="no",
-#                       # style={"height": "90%", "width": "98%"},
-#                        figure=geomap(),
-#                        config=dict(displayModeBar=False),
-#                        style={'width':'100%', 'height':'100%'}
-#                    ),
-#                ],
-#                 style={'width':'50%', 'display': 'inline-block'}
-#            )
-        ],
-        className="row",
-        style={'width': '100%', 'display': 'inline-block'}
-    ),
-                
-    html.Div([
-            html.H2('**Basic Statistics**'),
-            html.Pre(id='stats', style={'border': 'thin lightgrey solid', 'overflowX': 'scroll'})
             ],
-        className="row",
-        style={'width': '100%', 'display': 'inline-block'}
-        )
+            className="row",
+            style={'width': '100%', 'display': 'inline-block'}
+    )    
+                
+    
     ]
 
 #use clickData to update to the correct pie chart and stats!
@@ -129,11 +125,20 @@ def generate_stats(clickData):
 
 #refactor this so you can call an external function and get a nice layout!
 @app.callback(Output('pie', 'figure'), [Input('map', 'clickData')])
-def update_pie_charts(clickData):
+def update_pie_chart1(clickData):
     #hacky way of getting city name
     print('clicked on city = ', clickData['points'][0]['text'].split(':')[0])
     city_name = clickData['points'][0]['text'].split(':')[0]
-    return {'data' : get_industry_pie_chart(city_name)}
+    data, layout = get_industry_pie_chart(city_name)
+    return {'data' : data, 'layout': layout}
+
+@app.callback(Output('pie2', 'figure'), [Input('map', 'clickData')])
+def update_pie_chart2(clickData):
+    #hacky way of getting city name
+    print('clicked on city = ', clickData['points'][0]['text'].split(':')[0])
+    city_name = clickData['points'][0]['text'].split(':')[0]
+    data, layout = get_sector_pie_chart(city_name)
+    return {'data' : data, 'layout': layout}
     
 
 

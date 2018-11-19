@@ -16,7 +16,7 @@ class Job(db.Model):
     glassdoorid = db.Column(db.Integer)
     salary_estimated = db.Column(db.Integer, nullable=True)
     listed_city = db.Column(db.TEXT)
-
+    sector = db.Column(db.TEXT)
     company = db.relationship('Company', back_populates ='jobs')
     city = db.relationship('City', back_populates='jobs')
     industry = db.relationship('Industry', back_populates='jobs')

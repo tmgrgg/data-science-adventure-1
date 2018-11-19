@@ -80,9 +80,83 @@ def get_industry_pie_chart(city):
             "hoverinfo":"label+percent+name",
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
             "hole": .4,}]
+            
+    layout = layout = go.Layout(
+            autosize=False,
+            width=500,
+            height=500,
+            margin=go.layout.Margin(
+                    l=120,
+                    r=20,
+                    b=20,
+                    t=20,
+                    pad=4
+            ),
+            #paper_bgcolor='#7f7f7f',
+            #plot_bgcolor='#c7c7c7'
+            )
     # data = go.Pie (values = values, labels = labels)
     
-    return data
+    return data, layout
+
+def get_sector_pie_chart(city):
+    #need to change this query!
+    #df = pd.read_sql(db.session.query( Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).statement, db.session.bind) 
+    
+    #this gets us to a place where we just have san fran!
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(Job, City).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    #df = pd.read_sql(db.session.query(func.count(Job.id), City, Industry.name).join(City).filter(City.name == city).join(Industry).statement, db.session.bind)
+    df = pd.read_sql(db.session.query(Job).join(City).filter(City.name == city).statement, db.session.bind)
+
+    #could also easily vtake mean of estimated salary to get the mean salary per industry!
+    print('DF BEFORE GROUP: ', df)
+    df = df.groupby(['sector'])['title'].count()
+   # df = df.to_frame()
+    pd.set_option('display.max_columns', None)
+    
+    df.to_csv('my_csv.csv')
+
+    print('JOINED', df)
+
+    
+   # print('listy!', listy)
+    #listy =db.session.query(func.count(Job.id), Industry.name).join(Industry).order_by(func.count(Job.id).desc()).group_by(Industry.name).all()
+    # pdb.set_trace()
+    values = df.values
+    labels = df.index
+    data = []
+    
+    data = [{"values":values,
+             "title":city + " jobs<br>by Sector",
+            "labels":labels,
+            "domain": {"x": [0, .48]},
+            "name": "Data Science Jobs by Sector",
+            "type": "pie",
+            "textposition":"outside",
+            "showlegend":False,
+            "hoverinfo":"label+percent+name",
+            "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
+            "hole": .4,}]
+            
+    layout = layout = go.Layout(
+            autosize=False,
+            width=500,
+            height=500,
+            
+            margin=go.layout.Margin(
+                    l=120,
+                    r=20,
+                    b=20,
+                    t=20,
+                    pad=4
+            ),
+            #paper_bgcolor='#7f7f7f',
+            #plot_bgcolor='#c7c7c7'
+            )
+    # data = go.Pie (values = values, labels = labels)
+    
+    return data, layout
 
 def interactive_map_data_example(): 
     #create pandas dataframe from sql

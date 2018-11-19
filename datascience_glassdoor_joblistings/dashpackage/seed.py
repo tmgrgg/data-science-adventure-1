@@ -71,7 +71,8 @@ def create_jobs(jobs, df, companies, industries, cities):
         industry = get_attribute(df.industry[i], industries)
         city = get_attribute(df.location_search[i], cities)
         listed_city = df.job_city[i]
-        jobs.append(Job(title=title, sal_upper=sal_upper, sal_lower=sal_lower, glassdoorid = glassdoorid, company=company, industry=industry, city=city, salary_estimated=salary_estimated, listed_city=listed_city ))
+        sector = df.sector[i]
+        jobs.append(Job(title=title, sal_upper=sal_upper, sal_lower=sal_lower, glassdoorid = glassdoorid, company=company, industry=industry, sector=sector, city=city, salary_estimated=salary_estimated, listed_city=listed_city ))
 
 ###########Functions to Get File Paths of & Read all CSV files################################################
 def get_filepaths():
