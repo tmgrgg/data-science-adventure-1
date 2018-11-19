@@ -6,6 +6,19 @@ import pdb
 import plotly.plotly as py
 import pandas as pd
 
+def generate_pie_chart_colors():
+    colors = []
+    r = 12
+    g = 100
+    b = 50
+    for i in range(255):
+        r = min(120, r + 5)
+        b = min(120, b + 5)
+        g = min(200, g + 10)
+        colors.append('rgb({},{},{})'.format(r, g, b))
+    return colors
+        
+
 pie_chart_colors = {"marker": {"colors" : ['rgb(179,226,205)',\
                                           'rgb(247,247,247)','rgb(186,228,188)',\
                                           'rgb(237,248,233)','rgb(35,139,69)',\
@@ -149,7 +162,7 @@ def get_industry_pie_chart2(city):
             "textposition":"outside",
             "showlegend":False,
             "hoverinfo":"label+percent+name",
-            "marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']},
+            "marker": {"colors" : generate_pie_chart_colors()},
             "hole": .4,}]
     
     layout = go.Layout(
@@ -222,7 +235,7 @@ def get_sector_pie_chart(city):
             "name": "Data Science Jobs by Sector",
             "type": "pie",
             "textposition":"outside",
-            "marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']},
+            "marker": {"colors" : generate_pie_chart_colors()},
             "showlegend":False,
             "hoverinfo":"label+percent+name",
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
