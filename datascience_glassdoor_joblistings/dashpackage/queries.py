@@ -6,6 +6,7 @@ import pdb
 import plotly.plotly as py
 import pandas as pd
 
+pie_chart_colors = {"marker": {"colors" : ['rgb(179,226,205)', 'rgb(247,247,247)','rgb(186,228,188)','rgb(237,248,233)','rgb(35,139,69)', 'rgb(116,196,118)','rgb(150,150,150)', 'rgb(82,82,82)','rgb(161,218,180)', 'rgb(240,249,232)', 'rgb(115,115,115)'    ,'rgb(35,139,69)','rgb(116,196,118)','rgb(35,139,69)','rgb(99,99,99)','rgb(204,204,204)','rgb(186,228,179)','rgb(150,150,150)']}}
 
 def return_companies():
     return [company.name for company in db.session.query(Company).all() ]
@@ -78,6 +79,7 @@ def get_industry_pie_chart(city):
             "textposition":"outside",
             "showlegend":False,
             "hoverinfo":"label+percent+name",
+            "markers":pie_chart_colors['marker'],
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
             "hole": .4,}]
             
@@ -97,6 +99,23 @@ def get_industry_pie_chart(city):
             )
     # data = go.Pie (values = values, labels = labels)
     
+    return data, layout
+
+def get_samira_chart():
+    df = pd.read_sql(db.session.query(Job, City).join(City).statement, db.session.bind)
+    city_df = df.groupby(['name'])['salary_estimated'].mean()
+    city_df = city_df.to_frame()
+    city_exp_df = df.groupby(['name'])['expenses'].mean().to_frame()
+    x = [city for city in city_df.index]
+    y = [round(salary, 2) for salary in city_df['salary_estimated']]
+    y2 = [round(expense, 2) for expense in city_exp_df['expenses']]
+    trace1 = dict(x=x,y=y,name='Estimated Salary', marker=dict(color='rgb(12, 167, 65)'), type='bar')
+    trace2 = dict(x=x,y=y2,name='Expenses', marker=dict(color='rgb(180, 200, 180)'), type='bar')
+    data = [trace1, trace2]
+    
+    layout = go.Layout(
+    barmode='group'
+    )
     return data, layout
 
 def get_sector_pie_chart(city):
@@ -134,6 +153,7 @@ def get_sector_pie_chart(city):
             "name": "Data Science Jobs by Sector",
             "type": "pie",
             "textposition":"outside",
+            "markers":pie_chart_colors['marker'],
             "showlegend":False,
             "hoverinfo":"label+percent+name",
             "colors" : ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1'],
@@ -274,8 +294,10 @@ def interactive_map_data():
    # city_df['text'] = city_df['name'] + ', mean Glassdoor est. salary = ' + str(city_df[1])
     
     
-    scl = [ [0,"rgb(172, 10, 5)"],[0.35,"rgb(190, 60, 40)"],[0.5,"rgb(245, 100, 70)"],\
-        [0.6,"rgb(245, 120, 90)"],[0.7,"rgb(247, 137, 106)"],[1,"rgb(220, 220, 220)"] ]
+  #  scl = [ [0,"rgb(172, 10, 5)"],[0.35,"rgb(190, 60, 40)"],[0.5,"rgb(245, 100, 70)"],\
+   #     [0.6,"rgb(245, 120, 90)"],[0.7,"rgb(247, 137, 106)"],[1,"rgb(220, 220, 220)"] ]
+    
+    scl = [ [0,"rgb(12, 165, 67)"],[1,"rgb(180, 180, 180)"]]
     
     data = [ dict(
             type = 'scattergeo',
