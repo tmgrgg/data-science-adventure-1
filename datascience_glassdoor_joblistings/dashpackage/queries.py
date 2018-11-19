@@ -332,6 +332,8 @@ def interactive_map_data():
     airport_df = airport_df.groupby(['city'])['long', 'lat'].max()
     
     print(airport_df.loc['New York']['long'])
+    
+    airport_df.loc['Washington'] = [airport_df.loc['Arlington']['long'], airport_df.loc['Arlington']['long']]
 
     df = pd.read_sql(db.session.query(Job, City).join(City).statement, db.session.bind) 
 
@@ -345,8 +347,8 @@ def interactive_map_data():
 
     city_df['text'] = city_df.index + ': ' + city_df['salary_estimated'].apply(to_dollars)
     
-    city_df['long'] = [0.0,0.0,0.0,0.0,0.0,0.0]
-    city_df['lat'] = [0.0,0.0,0.0,0.0,0.0,0.0]
+    city_df['long'] = [0.0]*len(city_df.index)
+    city_df['lat'] = [0.0]*len(city_df.index)
     
     for city in city_df.index:
         
